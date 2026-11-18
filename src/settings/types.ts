@@ -697,6 +697,8 @@ export interface VaultProfile {
     fileVisibility: FileVisibility;
     propertyKeys: VaultProfilePropertyKey[];
     hiddenFolders: string[];
+    /** Custom fork: folders shown as top-level roots of the folder tree (empty = whole vault) */
+    rootFolders: string[];
     descendantExcludedFolders: string[];
     hiddenTags: string[];
     hiddenFileNames: string[];
@@ -814,6 +816,8 @@ export interface NotebookNavigatorSettings {
     excludeVaultRootFromCollapse: boolean;
     collapseOtherBranchesOnExpand: boolean;
     autoSelectFirstFileOnFocusChange: boolean;
+    /** Custom fork: in single pane mode, switch back to navigation after opening a file from the list */
+    autoReturnToNavigation: boolean;
     autoExpandNavItems: boolean;
     springLoadedFolders: boolean;
     springLoadedFoldersInitialDelay: number;

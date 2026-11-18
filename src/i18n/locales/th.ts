@@ -396,6 +396,8 @@ export const STRINGS_TH = {
             changeBackground: 'เปลี่ยนพื้นหลัง',
             excludeFolder: 'ซ่อนโฟลเดอร์',
             unhideFolder: 'เลิกซ่อนโฟลเดอร์',
+            addRootFolder: 'Add to root folders',
+            removeRootFolder: 'Remove from root folders',
             hideRootFolder: 'ซ่อนโฟลเดอร์ราก',
             showRootFolder: 'แสดงโฟลเดอร์ราก',
             excludeFromDescendants: 'ซ่อนจากโฟลเดอร์หลัก',
@@ -2065,6 +2067,15 @@ export const STRINGS_TH = {
                     header: 'แสดงในส่วนหัว',
                     navigation: 'แสดงในแผงนำทาง'
                 }
+            },
+            rootFolders: {
+                name: 'Root folders (vault profile)',
+                desc: 'Custom: comma-separated folder paths shown as the top level of the folder tree, e.g. /projects/active. Leave empty to show the whole vault.',
+                placeholder: '/projects/active, /notes/concepts'
+            },
+            autoReturnToNavigation: {
+                name: 'Return to navigation after opening a note',
+                desc: 'Custom: in single pane mode, show the folder tree again after a note is opened from the list.'
             },
             hideFolders: {
                 name: 'ซ่อนโฟลเดอร์ (โปรไฟล์ห้องนิรภัย)',

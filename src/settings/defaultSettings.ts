@@ -84,6 +84,7 @@ export const DEFAULT_SETTINGS: NotebookNavigatorSettings = {
             fileVisibility: FILE_VISIBILITY.SUPPORTED,
             propertyKeys: [],
             hiddenFolders: [],
+            rootFolders: [],
             descendantExcludedFolders: [],
             hiddenTags: [],
             hiddenFileNames: [],
@@ -195,7 +196,7 @@ export const DEFAULT_SETTINGS: NotebookNavigatorSettings = {
     showReleaseNotes: true,
 
     // Advanced tab
-    checkForUpdatesOnStart: true,
+    checkForUpdatesOnStart: false,
     showMarkdownPointBannerAtTop: true,
 
     // Navigation pane tab - Appearance
@@ -215,6 +216,7 @@ export const DEFAULT_SETTINGS: NotebookNavigatorSettings = {
     excludeVaultRootFromCollapse: false,
     collapseOtherBranchesOnExpand: false,
     autoSelectFirstFileOnFocusChange: false,
+    autoReturnToNavigation: false,
     autoExpandNavItems: false,
     springLoadedFolders: true,
     springLoadedFoldersInitialDelay: 0.5,

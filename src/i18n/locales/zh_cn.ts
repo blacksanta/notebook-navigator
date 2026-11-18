@@ -395,6 +395,8 @@ export const STRINGS_ZH_CN = {
             changeBackground: '更改背景',
             excludeFolder: '隐藏文件夹',
             unhideFolder: '显示文件夹',
+            addRootFolder: 'Add to root folders',
+            removeRootFolder: 'Remove from root folders',
             hideRootFolder: '隐藏根文件夹',
             showRootFolder: '显示根文件夹',
             excludeFromDescendants: '在父文件夹中隐藏',
@@ -2027,6 +2029,15 @@ export const STRINGS_ZH_CN = {
                     header: '显示在标题栏',
                     navigation: '显示在导航窗格'
                 }
+            },
+            rootFolders: {
+                name: 'Root folders (vault profile)',
+                desc: 'Custom: comma-separated folder paths shown as the top level of the folder tree, e.g. /projects/active. Leave empty to show the whole vault.',
+                placeholder: '/projects/active, /notes/concepts'
+            },
+            autoReturnToNavigation: {
+                name: 'Return to navigation after opening a note',
+                desc: 'Custom: in single pane mode, show the folder tree again after a note is opened from the list.'
             },
             hideFolders: {
                 name: '隐藏文件夹（仓库配置文件）',

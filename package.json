@@ -20,7 +20,8 @@
     "test:watch": "vitest",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" \"tests/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "deploy": "npm run build && mkdir -p \"$OBSIDIAN_PLUGIN_DIR\" && cp main.js styles.css manifest.json \"$OBSIDIAN_PLUGIN_DIR\"/"
   },
   "keywords": [],
   "author": "Johan Sanneblad",

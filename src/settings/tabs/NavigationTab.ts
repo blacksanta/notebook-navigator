@@ -72,6 +72,10 @@ export function createNavigationPaneSettingDefinitions(context: SettingsTabConte
                       })
                   ]
                 : []),
+            createToggleDefinition('autoReturnToNavigation', {
+                name: strings.settings.items.autoReturnToNavigation.name,
+                desc: strings.settings.items.autoReturnToNavigation.desc
+            }),
             createToggleDefinition('autoExpandNavItems', {
                 name: strings.settings.items.expandOnSelection.name,
                 desc: strings.settings.items.expandOnSelection.desc

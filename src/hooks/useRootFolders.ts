@@ -33,6 +33,7 @@ export interface RootFileChangeEvent {
 export interface UseRootFoldersParams {
     showRootFolder: boolean;
     showHiddenItems: boolean; // Reveals the vault root as a hidden item when the root folder setting is off
+    rootFolderPaths?: readonly string[]; // Custom fork: profile whitelist of folders shown as roots ("/path"); empty = whole vault
     onFileChange?: (change: RootFileChangeEvent) => void; // Callback triggered when files change
     onFolderChange?: () => void; // Callback triggered when folders are created, deleted, or renamed
 }
@@ -42,9 +43,17 @@ export interface UseRootFoldersParams {
  * Returns the vault root when it is shown, otherwise the top-level folders in vault order; the tree walker
  * sorts siblings. A new array on every rebuild is what re-renders the tree after nested folder changes.
  */
-export function useRootFolders({ showRootFolder, showHiddenItems, onFileChange, onFolderChange }: UseRootFoldersParams): TFolder[] {
+export function useRootFolders({
+    showRootFolder,
+    showHiddenItems,
+    rootFolderPaths,
+    onFileChange,
+    onFolderChange
+}: UseRootFoldersParams): TFolder[] {
     const { app } = useServices();
     const [rootFolders, setRootFolders] = useState<TFolder[]>([]);
+    // Joined key keeps the effect stable when the profile array is replaced with equal contents
+    const rootFolderPathsKey = (rootFolderPaths ?? []).join('\n');
 
     useEffect(() => {
         // A root folder hidden by the setting counts as a hidden item, so the show hidden items
@@ -53,6 +62,11 @@ export function useRootFolders({ showRootFolder, showHiddenItems, onFileChange, 
 
         const buildFolders = () => {
             const root = app.vault.getRoot();
+            const whitelisted = resolveRootFolderPaths(rootFolderPathsKey, path => app.vault.getFolderByPath(path));
+            if (whitelisted.length > 0) {
+                setRootFolders(whitelisted);
+                return;
+            }
             if (includeRootFolder) {
                 setRootFolders([root]);
                 return;
@@ -112,7 +126,27 @@ export function useRootFolders({ showRootFolder, showHiddenItems, onFileChange, 
             events.forEach(eventRef => app.vault.offref(eventRef));
             rebuildFolders.cancel();
         };
-    }, [app, onFileChange, onFolderChange, showRootFolder, showHiddenItems]);
+    }, [app, onFileChange, onFolderChange, showRootFolder, showHiddenItems, rootFolderPathsKey]);
 
     return rootFolders;
+}
+
+/**
+ * Custom fork: resolves newline-joined "/path" entries to existing folders, skipping missing paths and duplicates.
+ */
+export function resolveRootFolderPaths(pathsKey: string, getFolder: (path: string) => TFolder | null): TFolder[] {
+    const folders: TFolder[] = [];
+    const seen = new Set<string>();
+    for (const raw of pathsKey.split('\n')) {
+        const path = raw.trim().replace(/^\/+/, '').replace(/\/+$/, '');
+        if (!path || seen.has(path)) {
+            continue;
+        }
+        seen.add(path);
+        const folder = getFolder(path);
+        if (folder) {
+            folders.push(folder);
+        }
+    }
+    return folders;
 }

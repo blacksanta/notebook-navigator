@@ -44,6 +44,8 @@ import type { Align } from '../types/scroll';
 import { navigateToTag as navigateToTagInternal, type NavigateToTagOptions } from '../utils/tagNavigation';
 import { navigateToProperty as navigateToPropertyInternal, type NavigateToPropertyOptions } from '../utils/propertyNavigation';
 import { isFileHiddenBySettings } from '../utils/exclusionUtils';
+import { getActiveVaultProfile } from '../utils/vaultProfiles';
+import type { NotebookNavigatorSettings } from '../settings/types';
 import { strings } from '../i18n';
 import { showNotice } from '../utils/noticeUtils';
 import { registerActiveFileWorkspaceListeners } from '../utils/workspaceActiveFileEvents';
@@ -173,7 +175,7 @@ export function useNavigatorReveal({ app, navigationPaneRef, focusNavigationPane
 
     const handleHiddenFileReveal = useCallback(
         (file: TFile, options?: RevealFileOptions): boolean => {
-            if (!isFileHiddenBySettings(file, settings, app, uxPreferences.showHiddenItems)) {
+            if (!isFileHiddenBySettings(file, settings, app, uxPreferences.showHiddenItems) && isFileInsideRootFolders(file, settings)) {
                 return false;
             }
 
@@ -1092,4 +1094,17 @@ export function useNavigatorReveal({ app, navigationPaneRef, focusNavigationPane
         revealTag,
         revealProperty
     };
+}
+
+/** Custom fork: false when the active profile whitelists root folders and the file sits outside all of them. */
+function isFileInsideRootFolders(file: TFile, settings: NotebookNavigatorSettings): boolean {
+    const roots = getActiveVaultProfile(settings).rootFolders;
+    if (roots.length === 0) {
+        return true;
+    }
+    const filePath = file.path.toLowerCase();
+    return roots.some(root => {
+        const prefix = root.trim().replace(/^\/+/, '').replace(/\/+$/, '').toLowerCase();
+        return prefix.length > 0 && filePath.startsWith(`${prefix}/`);
+    });
 }

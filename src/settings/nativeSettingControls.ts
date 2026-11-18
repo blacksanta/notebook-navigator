@@ -172,6 +172,7 @@ const BOOLEAN_SETTING_KEYS = [
     'excludeVaultRootFromCollapse',
     'collapseOtherBranchesOnExpand',
     'autoSelectFirstFileOnFocusChange',
+    'autoReturnToNavigation',
     'autoExpandNavItems',
     'springLoadedFolders',
     'showFolderTemplateIcons'

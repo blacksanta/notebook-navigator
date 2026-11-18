@@ -39,7 +39,7 @@ describe('createModifiedSettingsTransfer', () => {
     // seed the grouping list from the sorting list without misreading an intentionally empty list.
     it('returns an envelope with only the always-exported keys when settings match defaults', () => {
         expect(createModifiedSettingsTransfer(structuredClone(DEFAULT_SETTINGS), '3.2.3')).toEqual({
-            plugin: 'notebook-navigator',
+            plugin: 'notebook-navigator-custom',
             pluginVersion: '3.2.3',
             settings: { propertyGroupKey: '' }
         });

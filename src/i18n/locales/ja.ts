@@ -398,6 +398,8 @@ export const STRINGS_JA = {
             changeBackground: '背景色を変更',
             excludeFolder: 'フォルダを非表示',
             unhideFolder: 'フォルダを表示',
+            addRootFolder: 'ルートフォルダに追加',
+            removeRootFolder: 'ルートフォルダから外す',
             hideRootFolder: 'ルートフォルダを非表示',
             showRootFolder: 'ルートフォルダを表示',
             excludeFromDescendants: '親フォルダで非表示',
@@ -2043,6 +2045,15 @@ export const STRINGS_JA = {
                     header: 'ヘッダーに表示',
                     navigation: 'ナビゲーションペインに表示'
                 }
+            },
+            rootFolders: {
+                name: 'ルートフォルダ（保管庫プロファイル）',
+                desc: 'カスタム: フォルダツリーの最上位に表示するフォルダのパスをカンマ区切りで指定（例: /projects/active）。空ならvault全体を表示。',
+                placeholder: '/projects/active, /notes/concepts'
+            },
+            autoReturnToNavigation: {
+                name: 'ノートを開いたらツリーに戻る',
+                desc: 'カスタム: 単一ペイン表示で一覧からノートを開いたら、フォルダツリーに戻す。'
             },
             hideFolders: {
                 name: 'フォルダを非表示（保管庫プロファイル）',

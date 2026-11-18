@@ -534,6 +534,26 @@ export function buildFolderMenu(params: FolderMenuBuilderParams): void {
         }
     }
 
+    // Custom fork: add/remove folder from the active profile's root folder whitelist
+    if (folder.path !== '/') {
+        const rootProfile = getActiveVaultProfile(services.plugin.settings);
+        const rootPath = `/${folder.path}`;
+        const isRoot = rootProfile.rootFolders.some(path => casefold(normalizeHiddenFolderPath(path)) === casefold(rootPath));
+        menu.addItem((item: MenuItem) => {
+            setAsyncOnClick(
+                item
+                    .setTitle(isRoot ? strings.contextMenu.folder.removeRootFolder : strings.contextMenu.folder.addRootFolder)
+                    .setIcon(isRoot ? 'lucide-pin-off' : 'lucide-pin'),
+                async () => {
+                    rootProfile.rootFolders = isRoot
+                        ? rootProfile.rootFolders.filter(path => casefold(normalizeHiddenFolderPath(path)) !== casefold(rootPath))
+                        : [...rootProfile.rootFolders, rootPath];
+                    await services.plugin.saveSettingsAndUpdate();
+                }
+            );
+        });
+    }
+
     // Hide/Unhide folder (not available for root folder)
     if (folder.path !== '/') {
         // Get the active vault profile to access its hidden folder patterns

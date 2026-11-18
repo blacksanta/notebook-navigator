@@ -398,6 +398,8 @@ export const STRINGS_DE = {
             changeBackground: 'Hintergrund ändern',
             excludeFolder: 'Ordner ausblenden',
             unhideFolder: 'Ordner einblenden',
+            addRootFolder: 'Add to root folders',
+            removeRootFolder: 'Remove from root folders',
             hideRootFolder: 'Wurzelordner ausblenden',
             showRootFolder: 'Wurzelordner anzeigen',
             excludeFromDescendants: 'In übergeordneten Ordnern ausblenden',
@@ -2051,6 +2053,15 @@ export const STRINGS_DE = {
                     header: 'Im Kopfbereich anzeigen',
                     navigation: 'Im Navigationsbereich anzeigen'
                 }
+            },
+            rootFolders: {
+                name: 'Root folders (vault profile)',
+                desc: 'Custom: comma-separated folder paths shown as the top level of the folder tree, e.g. /projects/active. Leave empty to show the whole vault.',
+                placeholder: '/projects/active, /notes/concepts'
+            },
+            autoReturnToNavigation: {
+                name: 'Return to navigation after opening a note',
+                desc: 'Custom: in single pane mode, show the folder tree again after a note is opened from the list.'
             },
             hideFolders: {
                 name: 'Ordner ausblenden (Vault-Profil)',

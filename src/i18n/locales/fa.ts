@@ -396,6 +396,8 @@ export const STRINGS_FA = {
             changeBackground: 'تغییر پس‌زمینه',
             excludeFolder: 'مخفی کردن پوشه',
             unhideFolder: 'آشکار کردن پوشه',
+            addRootFolder: 'Add to root folders',
+            removeRootFolder: 'Remove from root folders',
             hideRootFolder: 'مخفی کردن پوشه اصلی',
             showRootFolder: 'نمایش پوشه اصلی',
             excludeFromDescendants: 'مخفی کردن از پوشه‌های والد',
@@ -2074,6 +2076,15 @@ export const STRINGS_FA = {
                     header: 'نمایش در سربرگ',
                     navigation: 'نمایش در پنل ناوبری'
                 }
+            },
+            rootFolders: {
+                name: 'Root folders (vault profile)',
+                desc: 'Custom: comma-separated folder paths shown as the top level of the folder tree, e.g. /projects/active. Leave empty to show the whole vault.',
+                placeholder: '/projects/active, /notes/concepts'
+            },
+            autoReturnToNavigation: {
+                name: 'Return to navigation after opening a note',
+                desc: 'Custom: in single pane mode, show the folder tree again after a note is opened from the list.'
             },
             hideFolders: {
                 name: 'مخفی کردن پوشه‌ها (پروفایل خزانه)',

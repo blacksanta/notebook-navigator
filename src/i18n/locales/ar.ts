@@ -396,6 +396,8 @@ export const STRINGS_AR = {
             changeBackground: 'تغيير الخلفية',
             excludeFolder: 'إخفاء المجلد',
             unhideFolder: 'إظهار المجلد',
+            addRootFolder: 'Add to root folders',
+            removeRootFolder: 'Remove from root folders',
             hideRootFolder: 'إخفاء المجلد الجذري',
             showRootFolder: 'إظهار المجلد الجذري',
             excludeFromDescendants: 'إخفاء من المجلدات الأصلية',
@@ -2069,6 +2071,15 @@ export const STRINGS_AR = {
                     header: 'عرض في الرأس',
                     navigation: 'عرض في لوحة التنقل'
                 }
+            },
+            rootFolders: {
+                name: 'Root folders (vault profile)',
+                desc: 'Custom: comma-separated folder paths shown as the top level of the folder tree, e.g. /projects/active. Leave empty to show the whole vault.',
+                placeholder: '/projects/active, /notes/concepts'
+            },
+            autoReturnToNavigation: {
+                name: 'Return to navigation after opening a note',
+                desc: 'Custom: in single pane mode, show the folder tree again after a note is opened from the list.'
             },
             hideFolders: {
                 name: 'إخفاء المجلدات (ملف تعريف الخزنة)',

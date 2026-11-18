@@ -405,7 +405,9 @@ export function useListPaneSelectionCoordinator({
                 });
             }
 
-            uiDispatch({ type: 'ACTIVATE_PANE', target: 'files' });
+            // Custom fork: single pane returns to the folder tree once a note is opened with a plain click
+            const returnToNavigation = settings.autoReturnToNavigation && uiState.singlePane && !shouldMultiSelect && !isShiftKey;
+            uiDispatch({ type: 'ACTIVATE_PANE', target: returnToNavigation ? 'navigation' : 'files' });
 
             if (!shouldMultiSelect && !isShiftKey && shouldOpenInNewTab) {
                 runAsyncAction(() => openFileInContext({ app, commandQueue, file, context: 'tab' }));
@@ -426,8 +428,10 @@ export function useListPaneSelectionCoordinator({
             isMobile,
             orderedFiles,
             selectFileFromList,
+            settings.autoReturnToNavigation,
             settings.multiSelectModifier,
-            uiDispatch
+            uiDispatch,
+            uiState.singlePane
         ]
     );
 

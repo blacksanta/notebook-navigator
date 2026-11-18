@@ -396,6 +396,8 @@ export const STRINGS_IT = {
             changeBackground: 'Cambia sfondo',
             excludeFolder: 'Nascondi cartella',
             unhideFolder: 'Mostra cartella',
+            addRootFolder: 'Add to root folders',
+            removeRootFolder: 'Remove from root folders',
             hideRootFolder: 'Nascondi cartella root',
             showRootFolder: 'Mostra cartella root',
             excludeFromDescendants: 'Nascondi dalle cartelle superiori',
@@ -2077,6 +2079,15 @@ export const STRINGS_IT = {
                     header: "Mostra nell'intestazione",
                     navigation: 'Mostra nel pannello di navigazione'
                 }
+            },
+            rootFolders: {
+                name: 'Root folders (vault profile)',
+                desc: 'Custom: comma-separated folder paths shown as the top level of the folder tree, e.g. /projects/active. Leave empty to show the whole vault.',
+                placeholder: '/projects/active, /notes/concepts'
+            },
+            autoReturnToNavigation: {
+                name: 'Return to navigation after opening a note',
+                desc: 'Custom: in single pane mode, show the folder tree again after a note is opened from the list.'
             },
             hideFolders: {
                 name: 'Nascondi cartelle (profilo vault)',

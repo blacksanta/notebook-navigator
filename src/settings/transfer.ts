@@ -41,7 +41,7 @@ const NON_TRANSFERABLE_SETTING_KEYS = new Set([
     'propertyFields'
 ]);
 
-const SETTINGS_TRANSFER_PLUGIN_ID = 'notebook-navigator';
+const SETTINGS_TRANSFER_PLUGIN_ID = 'notebook-navigator-custom';
 
 function padTimestampPart(value: number): string {
     return value.toString().padStart(2, '0');
@@ -314,7 +314,8 @@ function unwrapSettingsTransfer(transferData: Record<string, unknown>): Record<s
         return migratedSettings;
     }
 
-    if (transferData.plugin !== SETTINGS_TRANSFER_PLUGIN_ID) {
+    // Custom fork: also accept exports from the upstream plugin.
+    if (transferData.plugin !== SETTINGS_TRANSFER_PLUGIN_ID && transferData.plugin !== 'notebook-navigator') {
         throw new Error('Not a Notebook Navigator settings export.');
     }
 

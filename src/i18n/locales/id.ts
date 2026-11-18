@@ -397,6 +397,8 @@ export const STRINGS_ID = {
             changeBackground: 'Ubah latar belakang',
             excludeFolder: 'Sembunyikan folder',
             unhideFolder: 'Tampilkan folder',
+            addRootFolder: 'Add to root folders',
+            removeRootFolder: 'Remove from root folders',
             hideRootFolder: 'Sembunyikan folder root',
             showRootFolder: 'Tampilkan folder root',
             excludeFromDescendants: 'Sembunyikan dari folder induk',
@@ -2075,6 +2077,15 @@ export const STRINGS_ID = {
                     header: 'Tampilkan di header',
                     navigation: 'Tampilkan di panel navigasi'
                 }
+            },
+            rootFolders: {
+                name: 'Root folders (vault profile)',
+                desc: 'Custom: comma-separated folder paths shown as the top level of the folder tree, e.g. /projects/active. Leave empty to show the whole vault.',
+                placeholder: '/projects/active, /notes/concepts'
+            },
+            autoReturnToNavigation: {
+                name: 'Return to navigation after opening a note',
+                desc: 'Custom: in single pane mode, show the folder tree again after a note is opened from the list.'
             },
             hideFolders: {
                 name: 'Sembunyikan folder (profil vault)',

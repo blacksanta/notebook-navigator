@@ -396,6 +396,8 @@ export const STRINGS_VI = {
             changeBackground: 'Đổi nền',
             excludeFolder: 'Ẩn thư mục',
             unhideFolder: 'Hiện thư mục',
+            addRootFolder: 'Add to root folders',
+            removeRootFolder: 'Remove from root folders',
             hideRootFolder: 'Ẩn thư mục gốc',
             showRootFolder: 'Hiện thư mục gốc',
             excludeFromDescendants: 'Ẩn khỏi thư mục cha',
@@ -2072,6 +2074,15 @@ export const STRINGS_VI = {
                     header: 'Hiện ở header',
                     navigation: 'Hiện ở ngăn điều hướng'
                 }
+            },
+            rootFolders: {
+                name: 'Root folders (vault profile)',
+                desc: 'Custom: comma-separated folder paths shown as the top level of the folder tree, e.g. /projects/active. Leave empty to show the whole vault.',
+                placeholder: '/projects/active, /notes/concepts'
+            },
+            autoReturnToNavigation: {
+                name: 'Return to navigation after opening a note',
+                desc: 'Custom: in single pane mode, show the folder tree again after a note is opened from the list.'
             },
             hideFolders: {
                 name: 'Ẩn thư mục (hồ sơ vault)',

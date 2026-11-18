@@ -100,7 +100,7 @@ export class IndexedDBStorage {
     private pendingRebuildNotice = false;
 
     constructor(appId: string, options?: IndexedDBStorageOptions) {
-        this.dbName = `notebooknavigator/cache/${appId}`;
+        this.dbName = `notebooknavigator-custom/cache/${appId}`;
         const previewTextCacheMaxEntries = options?.previewTextCacheMaxEntries ?? DEFAULT_PREVIEW_TEXT_CACHE_MAX_ENTRIES;
         this.cache = options?.cache ?? new MemoryFileCache({ previewTextCacheMaxEntries });
         const normalizedPreviewTextCacheMaxEntries = Math.max(0, previewTextCacheMaxEntries);

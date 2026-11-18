@@ -397,6 +397,8 @@ export const STRINGS_RU = {
             changeBackground: 'Изменить фон',
             excludeFolder: 'Скрыть папку',
             unhideFolder: 'Показать папку',
+            addRootFolder: 'Add to root folders',
+            removeRootFolder: 'Remove from root folders',
             hideRootFolder: 'Скрыть корневую папку',
             showRootFolder: 'Показать корневую папку',
             excludeFromDescendants: 'Скрыть в родительских папках',
@@ -2073,6 +2075,15 @@ export const STRINGS_RU = {
                     header: 'Показать в заголовке',
                     navigation: 'Показать в панели навигации'
                 }
+            },
+            rootFolders: {
+                name: 'Root folders (vault profile)',
+                desc: 'Custom: comma-separated folder paths shown as the top level of the folder tree, e.g. /projects/active. Leave empty to show the whole vault.',
+                placeholder: '/projects/active, /notes/concepts'
+            },
+            autoReturnToNavigation: {
+                name: 'Return to navigation after opening a note',
+                desc: 'Custom: in single pane mode, show the folder tree again after a note is opened from the list.'
             },
             hideFolders: {
                 name: 'Скрыть папки (профиль хранилища)',

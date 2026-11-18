@@ -186,6 +186,7 @@ export function useFolderNavigationSourceState({
     const rootFolders = useRootFolders({
         showRootFolder: settings.showRootFolder,
         showHiddenItems,
+        rootFolderPaths: activeProfile.profile.rootFolders,
         onFileChange: handleRootFileChange,
         onFolderChange: handleRootFolderChange
     });

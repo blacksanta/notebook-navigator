@@ -401,6 +401,8 @@ export const STRINGS_NL = {
             changeBackground: 'Achtergrond wijzigen',
             excludeFolder: 'Map verbergen',
             unhideFolder: 'Map zichtbaar maken',
+            addRootFolder: 'Add to root folders',
+            removeRootFolder: 'Remove from root folders',
             hideRootFolder: 'Hoofdmap verbergen',
             showRootFolder: 'Hoofdmap tonen',
             excludeFromDescendants: 'Verbergen in bovenliggende mappen',
@@ -2082,6 +2084,15 @@ export const STRINGS_NL = {
                     header: 'Weergeven in koptekst',
                     navigation: 'Weergeven in navigatiepaneel'
                 }
+            },
+            rootFolders: {
+                name: 'Root folders (vault profile)',
+                desc: 'Custom: comma-separated folder paths shown as the top level of the folder tree, e.g. /projects/active. Leave empty to show the whole vault.',
+                placeholder: '/projects/active, /notes/concepts'
+            },
+            autoReturnToNavigation: {
+                name: 'Return to navigation after opening a note',
+                desc: 'Custom: in single pane mode, show the folder tree again after a note is opened from the list.'
             },
             hideFolders: {
                 name: 'Mappen verbergen (kluisprofiel)',

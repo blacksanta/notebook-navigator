@@ -68,7 +68,7 @@ export class LanguageDatabase implements LanguageCache {
         if (this.db) return Promise.resolve(this.db);
         if (this.opening) return this.opening;
         this.opening = new Promise((resolve, reject) => {
-            const request = indexedDB.open(`notebooknavigator/languages/${this.vaultId}`, 1);
+            const request = indexedDB.open(`notebooknavigator-custom/languages/${this.vaultId}`, 1);
             request.onupgradeneeded = () => request.result.createObjectStore('languages');
             request.onerror = () => reject(request.error ?? new Error('Language cache open failed'));
             request.onblocked = () => reject(new Error('Language cache open blocked'));

@@ -395,6 +395,8 @@ export const STRINGS_KO = {
             changeBackground: '배경색 변경',
             excludeFolder: '폴더 숨기기',
             unhideFolder: '폴더 표시',
+            addRootFolder: 'Add to root folders',
+            removeRootFolder: 'Remove from root folders',
             hideRootFolder: '루트 폴더 숨기기',
             showRootFolder: '루트 폴더 표시',
             excludeFromDescendants: '상위 폴더에서 숨기기',
@@ -2070,6 +2072,15 @@ export const STRINGS_KO = {
                     header: '헤더에 표시',
                     navigation: '탐색 창에 표시'
                 }
+            },
+            rootFolders: {
+                name: 'Root folders (vault profile)',
+                desc: 'Custom: comma-separated folder paths shown as the top level of the folder tree, e.g. /projects/active. Leave empty to show the whole vault.',
+                placeholder: '/projects/active, /notes/concepts'
+            },
+            autoReturnToNavigation: {
+                name: 'Return to navigation after opening a note',
+                desc: 'Custom: in single pane mode, show the folder tree again after a note is opened from the list.'
             },
             hideFolders: {
                 name: '폴더 숨기기 (보관함 프로필)',

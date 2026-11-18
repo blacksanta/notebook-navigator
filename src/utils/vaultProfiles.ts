@@ -58,6 +58,7 @@ const FALLBACK_VAULT_PROFILE_NAME = 'Default';
 interface VaultProfileInitOptions {
     id?: string;
     hiddenFolders?: string[];
+    rootFolders?: string[];
     descendantExcludedFolders?: string[];
     hiddenFileProperties?: string[];
     hiddenFileNames?: string[];
@@ -246,8 +247,8 @@ export interface HiddenFolderPatternMatch {
     normalizedPrefix: string;
 }
 
-type FolderPatternProfileKey = 'hiddenFolders' | 'descendantExcludedFolders';
-const FOLDER_PATTERN_PROFILE_KEYS: readonly FolderPatternProfileKey[] = ['hiddenFolders', 'descendantExcludedFolders'];
+type FolderPatternProfileKey = 'hiddenFolders' | 'descendantExcludedFolders' | 'rootFolders';
+const FOLDER_PATTERN_PROFILE_KEYS: readonly FolderPatternProfileKey[] = ['hiddenFolders', 'descendantExcludedFolders', 'rootFolders'];
 
 export const getHiddenFolderPatternMatch = (pattern: string): HiddenFolderPatternMatch | null => {
     if (!isHiddenFolderPathPattern(pattern)) {
@@ -612,6 +613,7 @@ export function createVaultProfile(name: string, options: VaultProfileInitOption
         name: resolveProfileName(name),
         fileVisibility: resolveFileVisibility(options.fileVisibility),
         hiddenFolders: clonePatterns(options.hiddenFolders),
+        rootFolders: clonePatterns(options.rootFolders),
         descendantExcludedFolders: clonePatterns(options.descendantExcludedFolders),
         hiddenTags: clonePatterns(options.hiddenTags),
         hiddenFileNames: clonePatterns(options.hiddenFileNames),
@@ -639,6 +641,7 @@ function createVaultProfileFromTemplate(name: string, template: VaultProfileTemp
     const source = template.sourceProfile ?? null;
     return createVaultProfile(name, {
         hiddenFolders: source?.hiddenFolders,
+        rootFolders: source?.rootFolders,
         descendantExcludedFolders: source?.descendantExcludedFolders,
         hiddenFileProperties: source?.hiddenFileProperties,
         hiddenFileNames: source?.hiddenFileNames,
@@ -842,6 +845,7 @@ export function ensureVaultProfiles(settings: NotebookNavigatorSettings): void {
         profile.name = resolveProfileName(profile.name);
         profile.fileVisibility = resolveFileVisibility(profile.fileVisibility);
         profile.hiddenFolders = clonePatterns(profile.hiddenFolders);
+        profile.rootFolders = clonePatterns(profile.rootFolders);
         profile.descendantExcludedFolders = clonePatterns(profile.descendantExcludedFolders);
         const hiddenTagSource = Array.isArray(profile.hiddenTags) ? profile.hiddenTags : [];
         profile.hiddenTags = clonePatterns(hiddenTagSource);
