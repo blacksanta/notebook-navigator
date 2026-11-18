@@ -67,7 +67,9 @@ export class LanguageService {
 
     constructor(
         private readonly version: string,
-        private readonly cache: LanguageCache
+        private readonly cache: LanguageCache,
+        // Custom fork: reads the bundled languages.json; upstream release packs never match this fork's strings
+        private readonly readPack?: () => Promise<string>
     ) {
         this.pack = `${version}/${LANGUAGE_DATA_ID}`;
         this.snapshot = { ready: this.locale === 'en', downloading: false, failed: false };
@@ -154,11 +156,15 @@ export class LanguageService {
      */
     private async requestPack(): Promise<Record<string, unknown> | null> {
         try {
-            const response = await requestUrl({
-                url: `https://github.com/johansan/notebook-navigator/releases/download/${encodeURIComponent(this.version)}/languages.json`
-            });
+            const text = this.readPack
+                ? await this.readPack()
+                : (
+                      await requestUrl({
+                          url: `https://github.com/johansan/notebook-navigator/releases/download/${encodeURIComponent(this.version)}/languages.json`
+                      })
+                  ).text;
             if (this.controller.signal.aborted) return null;
-            const pack: unknown = JSON.parse(response.text);
+            const pack: unknown = JSON.parse(text);
             if (!isRecord(pack) || pack.version !== this.version || pack.id !== LANGUAGE_DATA_ID || !isRecord(pack.locales)) {
                 throw new Error('Language pack does not match the installed plugin');
             }

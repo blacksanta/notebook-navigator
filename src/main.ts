@@ -448,7 +448,9 @@ export default class NotebookNavigatorPlugin extends Plugin implements ISettings
 
         // Initialize database early for StorageContext consumers
         const appId = (this.app as ExtendedApp).appId || '';
-        this.languageService = new LanguageService(this.manifest.version, new LanguageDatabase(appId));
+        this.languageService = new LanguageService(this.manifest.version, new LanguageDatabase(appId), () =>
+            this.app.vault.adapter.read(`${this.manifest.dir}/languages.json`)
+        );
         recordStartupDiagnostic('languages.cache.start');
         const languageInitialization = this.languageService.initialize();
         this.register(

@@ -235,6 +235,14 @@ describe('language startup and downloads', () => {
         expect(cache.records.size).toBe(21);
         expect(strings.common.cancel).toBe('Abbrechen');
     });
+    it('reads the bundled pack instead of downloading when a reader is given', async () => {
+        const service = new LanguageService('test-version', new MemoryCache(), () => Promise.resolve(JSON.stringify(pack())));
+        services.push(service);
+        await service.initialize();
+        await service.ready;
+        expect(mocks.request).not.toHaveBeenCalled();
+        expect(strings.common.cancel).toBe('Abbrechen');
+    });
     it('reads only the chosen cached locale and makes no request on subsequent launches', async () => {
         const cache = new MemoryCache();
         await cache.put(`test-version/${LANGUAGE_DATA_ID}`, data);
