@@ -2037,8 +2037,8 @@ export const STRINGS_ZH_TW = {
                 placeholder: '/projects/active, /notes/concepts'
             },
             autoReturnToNavigation: {
-                name: 'Return to navigation after opening a note',
-                desc: 'Custom: in single pane mode, show the folder tree again after a note is opened from the list.'
+                name: 'Auto open/close file list',
+                desc: 'Custom: selecting a folder opens the file list, opening a note returns to the folder tree. Dual pane is not used while this is on.'
             },
             hideFolders: {
                 name: '隱藏資料夾（儲存庫設定檔）',

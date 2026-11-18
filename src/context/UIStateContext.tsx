@@ -144,7 +144,8 @@ export function UIStateProvider({ children }: UIStateProviderProps) {
 
     // Compute the effective pane layout from user preference and current container width.
     const stateWithPaneMode = useMemo(() => {
-        let dualPane = isDualPaneSupported() && state.dualPanePreference;
+        // Custom fork: auto open/close of the file list needs single pane mode
+        let dualPane = isDualPaneSupported() && state.dualPanePreference && !settings.autoReturnToNavigation;
         let effectiveDualPaneOrientation: DualPaneOrientation = settings.dualPaneOrientation;
 
         if (
@@ -177,6 +178,7 @@ export function UIStateProvider({ children }: UIStateProviderProps) {
         };
     }, [
         state,
+        settings.autoReturnToNavigation,
         settings.dualPaneOrientation,
         settings.narrowSidebarCustomWidth,
         settings.narrowSidebarLayout,

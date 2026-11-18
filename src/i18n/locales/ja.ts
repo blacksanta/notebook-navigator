@@ -2052,8 +2052,8 @@ export const STRINGS_JA = {
                 placeholder: '/projects/active, /notes/concepts'
             },
             autoReturnToNavigation: {
-                name: 'ノートを開いたらツリーに戻る',
-                desc: 'カスタム: 単一ペイン表示で一覧からノートを開いたら、フォルダツリーに戻す。'
+                name: 'ファイル一覧を自動で開閉する',
+                desc: 'カスタム: フォルダを選ぶと一覧を開き、ノートを開くとフォルダツリーに戻る。onの間はデュアルペイン表示を使わない。'
             },
             hideFolders: {
                 name: 'フォルダを非表示（保管庫プロファイル）',
